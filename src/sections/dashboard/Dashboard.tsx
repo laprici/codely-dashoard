@@ -1,14 +1,15 @@
-import Brand from "./brand.svg";
-import Check from "./check.svg";
+import { InMemoryGitHubRepositoryRepository } from "../../infraestructure/InMemoryGitHubRepositoryRepository";
+import Brand  from "./brand.svg";
+import Check  from "./check.svg";
 import styles from "./Dashboard.module.scss";
-import Error from "./error.svg";
+import Error  from "./error.svg";
 import PullRequests from "./git-pull-request.svg";
-import IssueOpened from "./issue-opened.svg";
-import Lock from "./lock.svg";
-import Forks from "./repo-forked.svg";
-import Start from "./star.svg";
-import Unlock from "./unlock.svg";
-import Watchers from "./watchers.svg";
+import IssueOpened  from "./issue-opened.svg";
+import Lock  from "./lock.svg";
+import Forks  from "./repo-forked.svg";
+import Start  from "./star.svg";
+import Unlock  from "./unlock.svg";
+import Watchers  from "./watchers.svg";
 
 const isoToReadableDate = (lastUpdate: string): string => {
 	const lastUpdateDate = new Date(lastUpdate);
@@ -36,7 +37,7 @@ export function Dashboard() {
 		<>
 			<header className={styles.header}>
 				<section className={styles.header__container}>
-					<Brand />
+					<img src={Brand} />
 					<h1 className={styles.app__brand}>DevDash_</h1>
 				</section>
 			</header>
@@ -53,7 +54,7 @@ export function Dashboard() {
 							>
 								{widget.repositoryData.organization.login}/{widget.repositoryData.name}
 							</a>
-							{widget.repositoryData.private ? <Lock /> : <Unlock />}
+							{widget.repositoryData.private ? <img src={Lock} /> : <img src={Unlock} />}
 						</header>
 						<div className={styles.widget__body}>
 							<div className={styles.widget__status}>
@@ -61,9 +62,9 @@ export function Dashboard() {
 								{widget.CiStatus.workflow_runs.length > 0 && (
 									<div>
 										{widget.CiStatus.workflow_runs[0].status === "completed" ? (
-											<Check />
+											<img src={Check} />
 										) : (
-											<Error />
+											<img src={Error} />
 										)}
 									</div>
 								)}
@@ -72,23 +73,23 @@ export function Dashboard() {
 						</div>
 						<footer className={styles.widget__footer}>
 							<div className={styles.widget__stat}>
-								<Start />
+								<img src={Start} />
 								<span>{widget.repositoryData.stargazers_count}</span>
 							</div>
 							<div className={styles.widget__stat}>
-								<Watchers />
+								<img src={Watchers} />
 								<span>{widget.repositoryData.watchers_count}</span>
 							</div>
 							<div className={styles.widget__stat}>
-								<Forks />
+								<img src={Forks} />
 								<span>{widget.repositoryData.forks_count}</span>
 							</div>
 							<div className={styles.widget__stat}>
-								<IssueOpened />
+								<img src={IssueOpened} />
 								<span>{widget.repositoryData.open_issues_count}</span>
 							</div>
 							<div className={styles.widget__stat}>
-								<PullRequests />
+								<img src={PullRequests} />
 								<span>{widget.pullRequest.length}</span>
 							</div>
 						</footer>
